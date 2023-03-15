@@ -31,8 +31,8 @@ This app aims to break down barriers and make high-class events more accessible 
 * JWT for authentication
 
 ### Authors
-* Richard Young
-* David Cheung
-* Joe Holder
-* Roy Galang
-* Nick Aguila 
+* Richard Young - https://github.com/richardyoungdev
+* David Cheung - https://github.com/david12291
+* Joe Holder - https://github.com/jholder090 
+* Roy Galang - https://github.com/wragyu
+* Nick Aguila - https://github.com/aguilana
