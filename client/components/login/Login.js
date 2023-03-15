@@ -32,7 +32,6 @@ const SignIn = ({ handleOpen }) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
