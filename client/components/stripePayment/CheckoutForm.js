@@ -6,6 +6,8 @@ import {
 } from "@stripe/react-stripe-js";
 import { useSelector } from "react-redux";
 
+console.log('process.env.mode: ', process.env.NODE_ENV)
+
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -52,7 +54,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://localhost:${process.env.PORT}/confirmation`,
+        return_url: process.env.NODE_ENV === development ? `http://localhost:${process.env.PORT}/confirmation` : `https://murmuring-hollows-40832.herokuapp.com/confirmation`,
       },
     });
 
