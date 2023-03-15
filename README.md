@@ -1,7 +1,6 @@
 # SUPPERCLUB
 ## Intro
 Are you a foodie looking for fresh culinary experiences, but don't know where to find them? Supperclub connects you with local chefs hosting events interested in sharing their passion and creativity. Find new foods and share new cultures today.
- 
 ![Image](https://user-images.githubusercontent.com/53794440/225324341-684930f8-7aa0-410c-978a-c18f150edeec.png)
 
 ## Why
