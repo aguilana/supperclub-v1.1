@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require("express");
 const app = express.Router()
 module.exports = app
-console.log('process.env', process.env.STRIPE_SECRET_API_KEY)
 const stripe = require("stripe")(process.env.STRIPE_SECRET_API_KEY)
 
 // POST /payment
