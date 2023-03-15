@@ -13,7 +13,7 @@ const withStripe = (Component) => {
     const [stripe, setStripe] = React.useState(null);
 
     React.useEffect(() => {
-      loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
+      loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`)
         .then((stripeInstance) => {
           setStripe(stripeInstance);
         });

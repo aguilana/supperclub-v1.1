@@ -27,7 +27,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import CancelIcon from "@mui/icons-material/Cancel";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 
-import Payment from "../stripePayment/Payment";
+// import Payment from "../stripePayment/Payment";
 
 //css
 import "./memberBooking.css";
