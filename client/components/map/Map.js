@@ -15,8 +15,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./map.css";
 
 
-console.log('ACCESS TOKEN', process.env.MAPBOX_ACCESS_TOKEN_KEY)
-console.log('MAPBOX STYLE', process.env.MAPBOX_STYLE)
+// console.log('ACCESS TOKEN', process.env.MAPBOX_ACCESS_TOKEN_KEY)
+// console.log('MAPBOX STYLE', process.env.MAPBOX_STYLE_KEY)
 
 const Map = ({ user }) => {
   // states for the selected markers and their popups

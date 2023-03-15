@@ -12,6 +12,7 @@ module.exports = {
   plugins: [
     new Dotenv({
       path: '.env', // or '.env.local', '.env.[mode]', etc.
+      systemvars: true, // load all the predefined 'process.env' variables which will trump anything local per dotenv specs.
     }),
   ],
   module: {
