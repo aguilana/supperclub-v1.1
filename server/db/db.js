@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const pkg = require('../../package.json');
 require('dotenv').config();
+console.log('process.env.NODE_ENV', process.env);
 
 const databaseName =
   pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
