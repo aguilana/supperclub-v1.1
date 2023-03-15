@@ -14,6 +14,10 @@ import { setReduxViewport } from "../slices/viewportSlice";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./map.css";
 
+
+console.log('ACCESS TOKEN', process.env.MAPBOX_ACCESS_TOKEN_KEY)
+console.log('MAPBOX STYLE', process.env.MAPBOX_STYLE)
+
 const Map = ({ user }) => {
   // states for the selected markers and their popups
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -226,8 +230,8 @@ const Map = ({ user }) => {
           {/* React Map Component to Access the Map */}
           <ReactMapGL
             {...viewport}
-            mapStyle={process.env.MAPBOX_STYLE_KEY}
-            mapboxAccessToken={process.env.MAPBOX_ACCESS_TOKEN_KEY}
+            mapStyle={`${process.env.MAPBOX_STYLE_KEY}`}
+            mapboxAccessToken={`${process.env.MAPBOX_ACCESS_TOKEN_KEY}`}
             // this let's us be able to move the map
             onMove={handleMoveMap}
             onRender={handleRender}
