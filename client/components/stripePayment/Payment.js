@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import CheckoutForm from "./CheckoutForm.js";
 
+console.log('process', process.env);
 console.log('process.env.STRIPE_PUBLISHABLE_KEY', process.env.STRIPE_PUBLISHABLE_KEY);
 console.log('process.env.STRIPE_SECRET_KEY', process.env.STRIPE_SECRET_KEY);
 

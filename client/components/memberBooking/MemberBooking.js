@@ -419,12 +419,13 @@ const MemberBooking = ({ user }) => {
       </Box>
       {payment && (
         <Box>
-          <Payment
+          PAY HERE
+          {/* <Payment
             newBookingState={newBookingState}
             guests={guests}
             booking={booking}
             bookingId={bookingId}
-          />
+          /> */}
         </Box>
       )}
     </div>
