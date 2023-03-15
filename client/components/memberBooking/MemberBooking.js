@@ -419,7 +419,7 @@ const MemberBooking = ({ user }) => {
       </Box>
       {payment && (
         <Box>
-          PAY HERE
+          <button onClick={()=>navigate('/confirmation')}>PAY HERE</button>
           {/* <Payment
             newBookingState={newBookingState}
             guests={guests}
