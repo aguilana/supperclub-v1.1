@@ -21,3 +21,10 @@ This app aims to break down barriers and make high-class events more accessible 
 * Mapbox API
 * Cloudinary API
 * JWT for authentication
+
+### Authors
+* Richard Young
+* David Cheung
+* Joe Holder
+* Roy Galang
+* Nick Aguila 
