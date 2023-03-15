@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import store from "./store/store";
@@ -10,9 +10,9 @@ const root = createRoot(document.getElementById("app"));
 
 const withStripe = (Component) => {
   return (props) => {
-    const [stripe, setStripe] = React.useState(null);
+    const [stripe, setStripe] = useState(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
       loadStripe(`${process.env.STRIPE_PUBLISHABLE_KEY}`)
         .then((stripeInstance) => {
           setStripe(stripeInstance);

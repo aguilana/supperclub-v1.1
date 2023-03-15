@@ -26,8 +26,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import CancelIcon from "@mui/icons-material/Cancel";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-
-// import Payment from "../stripePayment/Payment";
+import Payment from "../stripePayment/Payment";
 
 //css
 import "./memberBooking.css";
@@ -419,13 +418,13 @@ const MemberBooking = ({ user }) => {
       </Box>
       {payment && (
         <Box>
-          <button onClick={()=>navigate('/confirmation')}>PAY HERE</button>
-          {/* <Payment
+          {/* <button onClick={()=>navigate('/confirmation')}>PAY HERE</button> */}
+          <Payment
             newBookingState={newBookingState}
             guests={guests}
             booking={booking}
             bookingId={bookingId}
-          /> */}
+          />
         </Box>
       )}
     </div>
