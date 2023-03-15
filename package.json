@@ -1,6 +1,6 @@
 {
-  "name": "supperclub",
-  "version": "2.0.0",
+  "name": "supperclub-aguila",
+  "version": "2.0.1",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
   "scripts": {
