@@ -13,11 +13,12 @@ This app aims to break down barriers and make high-class events more accessible 
 
 ## Unique Features
 * The filtering with the map (from mapbox api) is incredibly accurate and not only are you able to search locally, near where you live, but to areas that you may be traveling to.
-![Image](https://user-images.githubusercontent.com/53794440/225328665-c0e1eb56-5e90-4cba-a532-cc7251fcac9d.png)
+![Image](https://user-images.githubusercontent.com/53794440/225328668-9011b668-09bc-4840-8112-deb62db5b7f5.png)
 
 ## User Experience
 ![Image](https://user-images.githubusercontent.com/53794440/225328667-c7092d1e-57ed-4070-80bc-1924f3bc81a4.png)
-![Image](https://user-images.githubusercontent.com/53794440/225328668-9011b668-09bc-4840-8112-deb62db5b7f5.png)
+![Image](https://user-images.githubusercontent.com/53794440/225328665-c0e1eb56-5e90-4cba-a532-cc7251fcac9d.png)
+
 
 ## Technologies
 * React / Reduc
