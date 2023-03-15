@@ -1,6 +1,7 @@
-const Dotenv = require('dotenv-webpack')
+const Dotenv = require('dotenv-webpack');
 module.exports = {
-  entry: ["mapbox-gl/dist/mapbox-gl.css", './client/index.js'],
+  mode: 'production',
+  entry: ['mapbox-gl/dist/mapbox-gl.css', './client/index.js'],
   output: {
     path: __dirname + '/public',
     filename: 'bundle.js',
@@ -8,15 +9,17 @@ module.exports = {
   context: __dirname,
   devtool: 'source-map',
   // this allows .env to happen
-  plugins: [ new Dotenv({
-    path: '.env', // or '.env.local', '.env.[mode]', etc.
-    }) ],
+  plugins: [
+    new Dotenv({
+      path: '.env', // or '.env.local', '.env.[mode]', etc.
+    }),
+  ],
   module: {
     rules: [
       {
         // this allows css styling loader
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.jsx?$/,
