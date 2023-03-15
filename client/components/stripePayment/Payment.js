@@ -5,6 +5,9 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import CheckoutForm from "./CheckoutForm.js";
 
+console.log('process.env.STRIPE_PUBLISHABLE_KEY', process.env.STRIPE_PUBLISHABLE_KEY);
+console.log('process.env.STRIPE_SECRET_KEY', process.env.STRIPE_SECRET_KEY);
+
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
