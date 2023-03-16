@@ -54,7 +54,7 @@ const CheckoutForm = () => {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: process.env.NODE_ENV === development 
+        return_url: process.env.NODE_ENV === 'development' 
         ? `http://localhost:${process.env.PORT}/confirmation` 
         : `${process.env.HOST}/confirmation`,
       },
