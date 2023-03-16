@@ -64,7 +64,7 @@ const Navbar = () => {
   }, []);
 
   // Determine the opacity based on the scroll position
-  const opacity = Math.max(0, 1 - (scrollTop - 50) / 100);
+  const opacity = Math.max(0, 1 - (scrollTop - 60) / 100);
 
   const handleNavToProfile = (e) => {
     e.preventDefault();
