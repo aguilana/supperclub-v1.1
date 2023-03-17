@@ -91,6 +91,42 @@ const SmallMenu = ({ user, handleOpen }) => {
           </MenuItem>
         )}
 
+        <MenuItem onClick={handleMenuClose}>
+          <Button
+            type="button"
+            sx={{ color: "#1b202c" }}
+            onClick={() => handleOpen('signup')}
+            startIcon={<EmojiEmotionsIcon />}
+          >
+            Sign Up
+          </Button>
+        </MenuItem>
+
+        {isLoggedIn ? (
+          <MenuItem onClick={handleMenuClose}>
+            <Button
+              type="button"
+              sx={{ color: "#1b202c" }}
+              onClick={logoutAndRedirectHome}
+              startIcon={<LogoutIcon />}
+            >
+              Logout
+            </Button>
+          </MenuItem>
+        ) : (
+          <MenuItem onClick={handleMenuClose}>
+            <Button
+              type="button"
+              sx={{ color: "#1b202c" }}
+              onClick={() => handleOpen('login')}
+              startIcon={<LoginIcon />}
+            >
+              Login
+            </Button>
+          </MenuItem>
+        )}
+
+
         {/* {user.role === "CHEF" ? null : (
           <MenuItem onClick={handleMenuClose}>
             <Button
