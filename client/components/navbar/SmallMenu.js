@@ -12,7 +12,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { logout } from "../auth/authSlice";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const SmallMenu = ({ user, handleOpen }) => {
+const SmallMenu = ({ user, handleOpen, logoutAndRedirectHome }) => {
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
@@ -31,11 +31,6 @@ const SmallMenu = ({ user, handleOpen }) => {
     } else {
       navigate(`/users/memberprofile/${user.id}`);
     }
-  };
-
-  const logoutAndRedirectHome = () => {
-    dispatch(logout());
-    navigate("/");
   };
 
   useEffect(() => {
@@ -91,57 +86,8 @@ const SmallMenu = ({ user, handleOpen }) => {
           </MenuItem>
         )}
 
-        <MenuItem onClick={handleMenuClose}>
-          <Button
-            type="button"
-            sx={{ color: "#1b202c" }}
-            onClick={() => handleOpen('signup')}
-            startIcon={<EmojiEmotionsIcon />}
-          >
-            Sign Up
-          </Button>
-        </MenuItem>
-
         {isLoggedIn ? (
-          <MenuItem onClick={handleMenuClose}>
-            <Button
-              type="button"
-              sx={{ color: "#1b202c" }}
-              onClick={logoutAndRedirectHome}
-              startIcon={<LogoutIcon />}
-            >
-              Logout
-            </Button>
-          </MenuItem>
-        ) : (
-          <MenuItem onClick={handleMenuClose}>
-            <Button
-              type="button"
-              sx={{ color: "#1b202c" }}
-              onClick={() => handleOpen('login')}
-              startIcon={<LoginIcon />}
-            >
-              Login
-            </Button>
-          </MenuItem>
-        )}
-
-
-        {/* {user.role === "CHEF" ? null : (
-          <MenuItem onClick={handleMenuClose}>
-            <Button
-              type="button"
-              sx={{ color: "#1b202c" }}
-              onClick={handleNavToProfile}
-              startIcon={<AccountCircleIcon />}
-            >
-              Profile
-            </Button>
-          </MenuItem>
-        )} */}
-
-        {isLoggedIn ? (
-          <div>
+          <>
             <MenuItem onClick={handleMenuClose}>
               <Button
                 type="button"
@@ -152,8 +98,42 @@ const SmallMenu = ({ user, handleOpen }) => {
                 Profile
               </Button>
             </MenuItem>
-          </div>
-        ) : null}
+            <MenuItem onClick={handleMenuClose}>
+              <Button
+                type="button"
+                sx={{ color: "#1b202c" }}
+                onClick={logoutAndRedirectHome}
+                startIcon={<LogoutIcon />}
+              >
+                Logout
+              </Button>
+            </MenuItem>
+          </>
+        ) : (
+          <>
+            <MenuItem onClick={handleMenuClose}>
+              <Button
+                type="button"
+                sx={{ color: "#1b202c" }}
+                onClick={() => handleOpen('signup')}
+                startIcon={<EmojiEmotionsIcon />}
+              >
+                Sign Up
+              </Button>
+            </MenuItem>
+
+            <MenuItem onClick={handleMenuClose}>
+              <Button
+                type="button"
+                sx={{ color: "#1b202c" }}
+                onClick={() => handleOpen('login')}
+                startIcon={<LoginIcon />}
+              >
+                Login
+              </Button>
+            </MenuItem>
+          </>
+        )}
       </Menu>
     </>
   );

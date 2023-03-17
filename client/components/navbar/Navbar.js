@@ -156,7 +156,7 @@ const Navbar = () => {
                 sx={{ marginRight: "25px", color: "whitesmoke" }}
                 startIcon={<LogoutIcon />}
               >
-                Log out
+                Logout
               </Button>
             </>
           ) : (
