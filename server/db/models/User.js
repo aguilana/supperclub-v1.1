@@ -40,7 +40,7 @@ const User = db.define('user', {
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [6, 20],
+      len: [6, 50],
     }
   },
   isAdmin: {
