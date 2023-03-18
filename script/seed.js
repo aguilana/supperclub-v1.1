@@ -107,7 +107,7 @@ async function seed() {
     password: "123456",
   });
 
-  await User.create({
+  const admin = await User.create({
     role: process.env.ADMIN_ROLE,
     firstName: process.env.ADMIN_FIRST_NAME,
     lastName: process.env.ADMIN_LAST_NAME,
@@ -204,6 +204,7 @@ async function seed() {
   console.log("USER MAGIC METHODS: ", Object.keys(User.prototype));
   console.log("CUISINE MAGIC METHODS: ", Object.keys(User.prototype));
   console.log("BOOKING MAGIC METHODS: ", Object.keys(Booking.prototype));
+  console.log("admin: ", admin)
   console.log(`seeded successfully`);
 }
 

@@ -12,8 +12,8 @@ client/env.js
 .vercel
 
 # scripts and config files for the database and the seed
-script
-script/seed.js
-script/bookingData.js
+/script
+/script/seed.js
+/script/bookingData.js
 
 CHANGELOG.md

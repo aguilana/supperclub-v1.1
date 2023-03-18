@@ -1,5 +1,3 @@
-# Updates to Boilermaker
-
 # Friday, October 21st, 2022
 
 ### Dependencies
