@@ -2,7 +2,7 @@ const {
   db,
   models: { User, Booking, Cuisine, UsersBookings },
 } = require("../server/db");
-
+require("dotenv").config();
 const { bookingData } = require("./bookingData")
 
 /**
@@ -107,6 +107,17 @@ async function seed() {
     password: "123456",
   });
 
+  await User.create({
+    role: process.env.ADMIN_ROLE,
+    firstName: process.env.ADMIN_FIRST_NAME,
+    lastName: process.env.ADMIN_LAST_NAME,
+    bio: process.env.ADMIN_BIO,
+    mobileNumber: process.env.ADMIN_PHONE,
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD,
+    isAdmin: process.env.ADMIN_IS_ADMIN,
+  })
+
   // CUISINES
   const cuisines = await Promise.all([
     Cuisine.create({
@@ -141,34 +152,34 @@ async function seed() {
     }),
   ]);
 
-  const bookings = await Promise.all(bookingData.map(booking=>Booking.create(booking)))
+  const bookings = await Promise.all(bookingData.map(booking => Booking.create(booking)))
 
   // BOOKING RESERVATIONS:
   const usersBookings = [
-    {memberId: 3, bookingId: 1, reservedSeats: 1}, //
-    {memberId: 3, bookingId: 4, reservedSeats: 6}, //
-    {memberId: 3, bookingId: 7, reservedSeats: 3}, //
-    {memberId: 4, bookingId: 1, reservedSeats: 1}, //
-    {memberId: 4, bookingId: 9, reservedSeats: 1}, //
-    {memberId: 4, bookingId: 11, reservedSeats: 1}, //
-    {memberId: 4, bookingId: 20, reservedSeats: 3}, //
-    {memberId: 5, bookingId: 1, reservedSeats: 1}, //
-    {memberId: 5, bookingId: 2, reservedSeats: 2}, //
-    {memberId: 5, bookingId: 7, reservedSeats: 3}, //
-    {memberId: 5, bookingId: 18, reservedSeats: 2}, //
-    {memberId: 5, bookingId: 21, reservedSeats: 13}, //
-    {memberId: 6, bookingId: 17, reservedSeats: 7}, //
-    {memberId: 6, bookingId: 15, reservedSeats: 5}, //
-    {memberId: 6, bookingId: 13, reservedSeats: 2}, //
-    {memberId: 6, bookingId: 22, reservedSeats: 8}, //
-    {memberId: 1, bookingId: 3, reservedSeats: 1}, //
-    {memberId: 1, bookingId: 5, reservedSeats: 4}, //
-    {memberId: 1, bookingId: 7, reservedSeats: 2}, //
-    {memberId: 1, bookingId: 23, reservedSeats: 2}, //
-    {memberId: 2, bookingId: 3, reservedSeats: 1}, //
-    {memberId: 2, bookingId: 9, reservedSeats: 1}, //
-    {memberId: 2, bookingId: 10, reservedSeats: 6}, //
-    {memberId: 2, bookingId: 23, reservedSeats: 1} //
+    { memberId: 3, bookingId: 1, reservedSeats: 1 }, //
+    { memberId: 3, bookingId: 4, reservedSeats: 6 }, //
+    { memberId: 3, bookingId: 7, reservedSeats: 3 }, //
+    { memberId: 4, bookingId: 1, reservedSeats: 1 }, //
+    { memberId: 4, bookingId: 9, reservedSeats: 1 }, //
+    { memberId: 4, bookingId: 11, reservedSeats: 1 }, //
+    { memberId: 4, bookingId: 20, reservedSeats: 3 }, //
+    { memberId: 5, bookingId: 1, reservedSeats: 1 }, //
+    { memberId: 5, bookingId: 2, reservedSeats: 2 }, //
+    { memberId: 5, bookingId: 7, reservedSeats: 3 }, //
+    { memberId: 5, bookingId: 18, reservedSeats: 2 }, //
+    { memberId: 5, bookingId: 21, reservedSeats: 13 }, //
+    { memberId: 6, bookingId: 17, reservedSeats: 7 }, //
+    { memberId: 6, bookingId: 15, reservedSeats: 5 }, //
+    { memberId: 6, bookingId: 13, reservedSeats: 2 }, //
+    { memberId: 6, bookingId: 22, reservedSeats: 8 }, //
+    { memberId: 1, bookingId: 3, reservedSeats: 1 }, //
+    { memberId: 1, bookingId: 5, reservedSeats: 4 }, //
+    { memberId: 1, bookingId: 7, reservedSeats: 2 }, //
+    { memberId: 1, bookingId: 23, reservedSeats: 2 }, //
+    { memberId: 2, bookingId: 3, reservedSeats: 1 }, //
+    { memberId: 2, bookingId: 9, reservedSeats: 1 }, //
+    { memberId: 2, bookingId: 10, reservedSeats: 6 }, //
+    { memberId: 2, bookingId: 23, reservedSeats: 1 } //
   ]
 
   await Promise.all(usersBookings.map(userBooking => UsersBookings.create(userBooking)))
@@ -228,4 +239,4 @@ if (module === require.main) {
 module.exports = seed;
 
 
-25-29
+25 - 29
