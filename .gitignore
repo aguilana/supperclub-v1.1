@@ -13,7 +13,5 @@ client/env.js
 
 # scripts and config files for the database and the seed
 /script
-/script/seed.js
-/script/bookingData.js
 
 CHANGELOG.md
