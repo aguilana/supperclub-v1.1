@@ -10,58 +10,61 @@ const Location = ({ handleChange, handleSubmit, value, setValue, suggestions, se
     <>
       <div className='search-function'>
         <Paper
-            sx={{display: "flex", m: "1em"}}
+          sx={{ display: "flex", marginTop: "1em", marginRight: "1em", marginLeft: "1em" }}
         >
-            <IconButton
-              type="button" 
-              onClick={ () => {
-                  if (value.length > 0) {
-                  handleSubmit();
-                }}
+          <IconButton
+            type="button"
+            onClick={() => {
+              if (value.length > 0) {
+                handleSubmit();
               }
-              
-              color={'primary'}
+            }
+            }
 
-              sx={{
-                p: '10px',
-                color: "#EB5757",
-              }}
-            >
+            color={'primary'}
+
+            sx={{
+              p: '10px',
+              color: "#EB5757",
+            }}
+          >
             <SearchIcon />
-            </IconButton>
-            <InputBase 
-                type="search" 
-                onChange={handleChange}
-                value={value}
-                placeholder="Enter city for nearest event" 
-                className='searchBar-input'
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' && value.length > 0) {
-                    handleSubmit();
-                  } 
-                }}
-            />
-            
+          </IconButton>
+          <InputBase
+            type="search"
+            onChange={handleChange}
+            value={value}
+            placeholder="Enter city for nearest event"
+            className='searchBar-input'
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' && value.length > 0) {
+                handleSubmit();
+              }
+            }}
+          />
 
 
-            {suggestions?.length > 0 && (
-              <Box className="searchBar-suggestionWrapper" sx={{ bgcolor: '#FCFCFC', position: 'absolute', width: "651.9px", mt: 5.58, mb: 0, mx: 0, borderRadius: '5px', boxShadow: 3 }} >
-                {suggestions.map((suggestion, index) => {
-                  return (
-                    <Box className="searchBar-suggestion" sx={{ width: "651px", p: 1.0, "&:hover": { color: 'midnightblue' } }} key={index}
-                      onClick={() => {
-                        setValue(suggestion.place_name);
-                        setSuggestions([]);
-                      }}>
-                      {suggestion.place_name}
-                    </Box>
-                  )
-                })}
-              </Box>
-            )}
+
         </Paper>
-      </div> 
-  </>
+        {suggestions?.length > 0 && (
+          <div
+            className="searchBar-suggestionWrapper"
+          >
+            {suggestions.map((suggestion, index) => {
+              return (
+                <Box className="searchBar-suggestion" sx={{ width: "100%", p: 1.0, color: "black", "&:hover": { color: 'midnightblue' } }} key={index}
+                  onClick={() => {
+                    setValue(suggestion.place_name);
+                    setSuggestions([]);
+                  }}>
+                  {suggestion.place_name}
+                </Box>
+              )
+            })}
+          </div>
+        )}
+      </div>
+    </>
   )
 
 }
@@ -121,23 +124,23 @@ export default Location
         //         component="form"
         //         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center'}}
         //     >
-        //         <InputBase 
+        //         <InputBase
         //             sx={{ ml: 1, flex: 1 }}
-        //             type="search" 
-        //             placeholder="Enter address for nearest event" 
+        //             type="search"
+        //             placeholder="Enter address for nearest event"
         //             onChange={(e) => {
         //                 setSearchResults(e.target.value)
         //             }}
         //         />
         //         <IconButton
-        //             type="button" sx={{ p: '10px' }} 
+        //             type="button" sx={{ p: '10px' }}
         //             onClick={ (e) => handleSearch(e.target.value) }
         //             color={'primary'}
         //         >
         //             <SearchIcon />
         //         </IconButton>
         //     </Paper>
-        // </div> 
+        // </div>
 //     </>
 //   );
 // }

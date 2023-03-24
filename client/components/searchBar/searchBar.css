@@ -1,6 +1,15 @@
 .searchBar-suggestionWrapper {
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: #fcfcfc;
+  position: absolute;
+  width: 574.97px;
+  border-radius: 5px;
+  box-shadow: 3px;
+  margin-left: 1em;
 }
+
 .searchBar-suggestion {
   cursor: pointer;
 }
@@ -14,4 +23,11 @@
   background-color: transparent;
   /* min-width: 100%; */
   width: 100%;
+}
+
+/* MEDIA QUERY for screen size UP TO 700px = the search suggestion wrapper */
+@media screen and (max-width: 700px) {
+  .searchBar-suggestionWrapper {
+    width: 453.58px;
+  }
 }
