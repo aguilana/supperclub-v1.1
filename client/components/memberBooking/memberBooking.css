@@ -3,10 +3,23 @@
   flex: 1;
   gap: 2rem;
   justify-content: center;
-  /* height: 100%; */
+  flex-direction: column;
   width: 100%;
-  padding: 50px 100px;
+  padding: 0.5rem;
   background-color: #252b3d;
+}
+
+@media screen and (min-width: 806px) {
+  .memberBooking-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    padding: 50px 100px;
+    background-color: #252b3d;
+  }
 }
 
 .memberBooking-allInfo {
