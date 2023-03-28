@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Menu, MenuItem } from "@mui/material";
-import FastfoodIcon from "@mui/icons-material/Fastfood";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import HomeIcon from "@mui/icons-material/Home";

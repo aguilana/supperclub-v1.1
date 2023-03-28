@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, TextField, Typography, Snackbar, Alert } from "@mui/material";
+import { Button, TextField, Typography, Snackbar, Alert, Checkbox } from "@mui/material";
 import { authenticate } from "../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,32 +12,56 @@ const btnStyle = {
   color: "whitesmoke",
 };
 
-const SignIn = ({ handleOpen }) => {
+const SignIn = ({ handleOpen, setErrorState }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { error } = useSelector((state) => state.auth);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
+
+  // adding more state for better login functionality
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  // const [errorState, setErrorState] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  // END
   const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (event) => {
+  const handleCheckboxChange = (event) => setShowPassword(event.target.checked);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     setOpen(true);
-
-    dispatch(authenticate({ email, password, method: "login" }));
+    setFormSubmitted(true)
+    try {
+      if (email !== "" && password !== "") {
+        await dispatch(authenticate({ email, password, method: "login" }));
+      }
+      if (error !== null) {
+        setErrorState(error)
+      }
+    } catch (err) {
+      console.log("err", err)
+    }
   };
 
   const handleSnackClose = (event, reason) => {
     if (reason === "clickaway") {
+      setErrorState('')
       return;
     }
+    setErrorState('')
     setOpen(false);
   };
 
   return (
     <div className="login-form-container">
-      <form id="login-form" onSubmit={handleSubmit}>
+      {/* {errorState && <Alert severity='error'>{errorState}</Alert>} */}
+      {error && <Alert severity='warning'>{error} </Alert>}
+      <form id="login-form" onSubmit={handleSubmit} noValidate={true}>
         <Typography id="login-form-title" variant="h5">
           Log In
         </Typography>
@@ -47,9 +71,11 @@ const SignIn = ({ handleOpen }) => {
             <TextField
               onChange={(e) => setEmail(e.target.value)}
               name="email"
-              value={email}
               type="text"
+              value={email}
               placeholder="Email"
+              error={formSubmitted && !email}
+              helperText={formSubmitted && !email && 'Email is required'}
             />
           </div>
 
@@ -57,10 +83,15 @@ const SignIn = ({ handleOpen }) => {
             <TextField
               onChange={(e) => setPassword(e.target.value)}
               name="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
-              type="password"
               placeholder="Password"
+              error={formSubmitted && !password}
+              helperText={formSubmitted && !password && 'Password is required'}
             />
+            <div className='login-password-show'>
+              <Checkbox checked={showPassword} onChange={handleCheckboxChange} /> <span> <small>Show Password</small> </span>
+            </div>
           </div>
 
           <div id="login-button">
@@ -75,7 +106,7 @@ const SignIn = ({ handleOpen }) => {
             </Button>
           </div>
         </div>
-        <Snackbar
+        {isLoggedIn && <Snackbar
           open={open}
           autoHideDuration={30000}
           onClose={handleSnackClose}
@@ -86,9 +117,9 @@ const SignIn = ({ handleOpen }) => {
             severity="success"
             sx={{ width: "100%" }}
           >
-            You logged in!
+            You logged in successfully!
           </Alert>
-        </Snackbar>
+        </Snackbar>}
       </form>
       <p className="login-to-sign-question">
         Don't have an account?{" "}

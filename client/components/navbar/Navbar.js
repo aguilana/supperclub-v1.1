@@ -17,6 +17,8 @@ import SmallMenu from "./SmallMenu";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [modalScreen, setModalScreen] = useState("");
+  const [errorState, setErrorState] = useState('');
+
 
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
@@ -31,6 +33,7 @@ const Navbar = () => {
 
   const handleClose = () => {
     setOpen(false);
+    setErrorState("");
     setModalScreen("");
 
     user.role === "CHEF" ? navigate(`/users/chefprofile/${user.id}`) : null;
@@ -42,7 +45,7 @@ const Navbar = () => {
     }
 
     if (modalScreen === "login") {
-      return <Login handleOpen={handleOpen} />;
+      return <Login handleOpen={handleOpen} errorState={setErrorState} />;
     }
   };
 
