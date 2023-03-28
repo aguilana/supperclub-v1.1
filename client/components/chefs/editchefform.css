@@ -1,38 +1,37 @@
 .upload-image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid rgb(205, 205, 205);
-    width: 498px;
-    /* margin-bottom: 15px; */
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(205, 205, 205);
+  width: 498px;
+  /* margin-bottom: 15px; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 4px;
 }
 
 .editchefform-edit-and-delete-buttons-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 5px solid greenyellow; */
-    width: 500px;
-    margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: 5px solid greenyellow; */
+  width: 500px;
+  margin-bottom: 15px;
 }
 
 .chefEvent-container {
-    background-color: #252b3d;
+  background-color: #252b3d;
 }
 
 .editChefForm-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background: whitesmoke;
-    border-radius: 12px;
-    box-shadow: 5px 5px 17px -5px rgba(0,0,0,0.75);
-    border: 1px solid #1b202c;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: whitesmoke;
+  border-radius: 12px;
+  box-shadow: 5px 5px 17px -5px rgba(0, 0, 0, 0.75);
+  border: 1px solid #1b202c;
+  padding: 20px;
 }
-

@@ -59,6 +59,13 @@ const Chefs = () => {
     textAlign: "center",
   };
 
+  function shortenString(str) {
+    if (str.length > 25) {
+      return str.slice(0, 25) + "..."
+    }
+    return str
+  }
+
   return (
     <div className="chefs-page-container">
       <header className="chefs-page-banner">
@@ -88,10 +95,10 @@ const Chefs = () => {
                           variant="contained"
                           size="small"
                           style={{
-                            fontSize: "11px",
+                            fontSize: "10px",
                             height: "65px",
                             width: "140px",
-                            marginRight: "15px",
+                            // marginRight: "15px",
                           }}
                           sx={{
                             "&:hover": {
@@ -105,7 +112,7 @@ const Chefs = () => {
                             color: "whitesmoke",
                           }}
                         >
-                          <p>{booking.title}</p>
+                          <p className='chefs-card-bookingcard-p'>{shortenString(booking.title)}</p>
                         </Button>
                       ) : (
                         ""
@@ -142,7 +149,7 @@ const Chefs = () => {
           </Box>
         </Modal>
       </div>
-    </div>
+    </div >
   );
 };
 
