@@ -3,7 +3,7 @@
 const { expect } = require('chai')
 const { db, models: { User } } = require('../index')
 const jwt = require('jsonwebtoken');
-const seed = require('../../../bin/seed');
+const seed = require('../../../script/seed');
 
 describe('User model', () => {
   let users;
