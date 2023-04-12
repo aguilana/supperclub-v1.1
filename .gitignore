@@ -13,5 +13,6 @@ client/env.js
 
 # scripts and config files for the database and the seed
 /script
+bin
 
 CHANGELOG.md

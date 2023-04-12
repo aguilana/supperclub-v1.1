@@ -21,7 +21,11 @@ const requireToken = async (req, res, next) => {
 // USERS GET /api/users
 router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll(
+      {
+        attributes: ['firstName', 'lastName', 'bio', 'email']
+      }
+    );
     res.json(users);
   } catch (err) {
     next(err);

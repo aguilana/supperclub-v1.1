@@ -1,19 +1,19 @@
 /* global describe beforeEach it */
 
-const {expect} = require('chai')
+const { expect } = require('chai')
 const { db, models: { User } } = require('../index')
 const jwt = require('jsonwebtoken');
-const seed = require('../../../script/seed');
+const seed = require('../../../bin/seed');
 
 describe('User model', () => {
   let users;
-  beforeEach(async() => {
+  beforeEach(async () => {
     users = (await seed()).users;
   })
 
   describe('instanceMethods', () => {
     describe('generateToken', () => {
-      it('returns a token with the id of the user', async() => {
+      it('returns a token with the id of the user', async () => {
         const token = await users.cody.generateToken();
         const { id } = await jwt.verify(token, process.env.JWT);
         expect(id).to.equal(users.cody.id);
@@ -21,12 +21,12 @@ describe('User model', () => {
     }) // end describe('correctPassword')
     describe('authenticate', () => {
       let user;
-      beforeEach(async()=> user = await User.create({
+      beforeEach(async () => user = await User.create({
         email: 'lucy',
         password: 'loo'
       }));
-      describe('with correct credentials', ()=> {
-        it('returns a token', async() => {
+      describe('with correct credentials', () => {
+        it('returns a token', async () => {
           const token = await User.authenticate({
             email: 'lucy',
             password: 'loo'
@@ -34,8 +34,8 @@ describe('User model', () => {
           expect(token).to.be.ok;
         })
       });
-      describe('with incorrect credentials', ()=> {
-        it('throws a 401', async() => {
+      describe('with incorrect credentials', () => {
+        it('throws a 401', async () => {
 
           try {
             await User.authenticate({
@@ -44,7 +44,7 @@ describe('User model', () => {
             });
             throw 'nooo';
           }
-          catch(ex){
+          catch (ex) {
             expect(ex.status).to.equal(401);
           }
         })
