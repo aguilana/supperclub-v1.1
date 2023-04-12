@@ -17,6 +17,10 @@
     "test:dev:models": "npm run test:dev -- --grep=model",
     "test:dev:routes": "npm run test:dev -- --grep=route"
   },
+  "engines": {
+    "node": "16.17.1",
+    "npm": "9.6.4"
+  },
   "author": "supperclub",
   "license": "MIT",
   "dependencies": {
@@ -41,6 +45,7 @@
     "mapbox-gl": "^2.12.0",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
+    "node": "^18.15.0",
     "pg": "^8.8.0",
     "react-icons": "^4.7.1",
     "react-map-gl": "^7.0.21",
