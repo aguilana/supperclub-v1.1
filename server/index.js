@@ -2,7 +2,8 @@ const { db } = require('./db')
 const PORT = process.env.PORT || 8080
 const app = require('./app')
 // changed to bin // back to script
-const seed = require('../script/seed.js');
+// const seed = require('../script/seed.js');
+const seed = require('../script/seed')
 
 
 const init = async () => {
