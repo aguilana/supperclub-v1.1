@@ -12,7 +12,6 @@ client/env.js
 .vercel
 
 # scripts and config files for the database and the seed
-/script
 bin
 
 CHANGELOG.md
