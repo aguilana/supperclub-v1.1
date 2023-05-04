@@ -113,7 +113,7 @@ const CheckoutForm = () => {
       >
         <span id="button-text">
           {isLoading ? (
-            <span></span>
+            <span> Loading ... </span>
           ) : (
             <div>
               <span> Book Event </span>

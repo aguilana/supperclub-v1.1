@@ -228,7 +228,6 @@ const MemberBooking = ({ user }) => {
               <LocalDining />
               <p>Cuisine:</p>
               <p className="memberBooking-experience-shortDetails-info">
-                {" "}
                 {booking?.cuisine?.category}
               </p>
             </div>
@@ -249,7 +248,6 @@ const MemberBooking = ({ user }) => {
             <div className="memberBooking-experience-time-start">
               <AccessTime /> <p>Start:</p>
               <p className="memberBooking-experience-shortDetails-info">
-                {" "}
                 {booking.startDateTime}
               </p>
             </div>
@@ -284,9 +282,8 @@ const MemberBooking = ({ user }) => {
           <Box className="memberBooking-form" component="form">
             <div className="reservedSeats">
               {currentMember
-                ? `You have reserved ${reservedSeats} ${
-                    reservedSeats === 1 ? "seat" : "seats"
-                  } for this booking`
+                ? `You have reserved ${reservedSeats} ${reservedSeats === 1 ? "seat" : "seats"
+                } for this booking`
                 : ""}
             </div>
             <Box sx={{ width: "100%" }}>
