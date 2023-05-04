@@ -1,14 +1,15 @@
 const Dotenv = require('dotenv-webpack');
 module.exports = (env) => {
+
   return {
-    mode: env ? 'production' : 'development',
+    mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     entry: ['mapbox-gl/dist/mapbox-gl.css', './client/index.js'],
     output: {
       path: __dirname + '/public',
       filename: 'bundle.js',
     },
     context: __dirname,
-    devtool: env ? 'hidden-nosources-source-map' : 'inline-source-map',
+    devtool: process.env.NODE_ENV === 'production' ? 'hidden-nosources-source-map' : 'source-map',
     // this allows .env to happen
     plugins: [
       new Dotenv({

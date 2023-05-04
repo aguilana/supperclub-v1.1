@@ -86,7 +86,7 @@ const SmallMenu = ({ user, handleOpen, logoutAndRedirectHome }) => {
         )}
 
         {isLoggedIn ? (
-          <>
+          <div>
             <MenuItem onClick={handleMenuClose}>
               <Button
                 type="button"
@@ -107,9 +107,9 @@ const SmallMenu = ({ user, handleOpen, logoutAndRedirectHome }) => {
                 Logout
               </Button>
             </MenuItem>
-          </>
+          </div>
         ) : (
-          <>
+          <div>
             <MenuItem onClick={handleMenuClose}>
               <Button
                 type="button"
@@ -131,7 +131,7 @@ const SmallMenu = ({ user, handleOpen, logoutAndRedirectHome }) => {
                 Login
               </Button>
             </MenuItem>
-          </>
+          </div>
         )}
       </Menu>
     </>
