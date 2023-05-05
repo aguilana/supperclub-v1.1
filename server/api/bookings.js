@@ -13,10 +13,14 @@ router.get("/", async (req, res, next) => {
         {
           model: User,
           as: "chefBooking",
+          attributes: ["id", "firstName", "lastName", "bio"]
         },
         {
           model: User,
           as: "memberBooking",
+          attributes: {
+            exclude: ["password", "isAdmin", "mobileNumber"]
+          }
         },
         {
           model: Cuisine,
