@@ -2,6 +2,7 @@ const router = require("express").Router();
 const {
   models: { User, Booking, Cuisine, UsersBookings },
 } = require("../db");
+const { requireToken, isAdmin, requireTokenAndAuthorize } = require("../middleware/authMiddleware.js");
 module.exports = router;
 
 // BOOKINGS GET /api/bookings

@@ -2,30 +2,17 @@ const router = require("express").Router();
 const {
   models: { User, Booking },
 } = require("../db");
+const { requireToken, isAdmin, requireTokenAndAuthorize } = require("../middleware/authMiddleware.js");
 module.exports = router;
 
-const requireToken = async (req, res, next) => {
-  try {
-    const token = req.headers.authorization;
-    if (!token) {
-      return res.status(401).send("Access denied");
-    }
-    const user = await User.findByToken(token);
-    req.user = user;
-    next();
-  } catch (error) {
-    next(error);
-  }
-};
-
 // USERS GET /api/users
-router.get("/", async (req, res, next) => {
+router.get("/", requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       where: {
         role: "MEMBER",
       },
-      attributes: ["id", "firstName", "lastName", "email"],
+      attributes: { exclude: ["password", "isAdmin"] },
     });
     res.json(users);
   } catch (err) {
@@ -40,6 +27,7 @@ router.get("/chefs", async (req, res, next) => {
       where: {
         role: "CHEF",
       },
+      attributes: ["firstName", "lastName", "bio"],
       include: {
         model: Booking,
         as: "chefBooking",
@@ -52,12 +40,13 @@ router.get("/chefs", async (req, res, next) => {
 });
 
 // MEMBERS GET /api/users/members
-router.get("/members", async (req, res, next) => {
+router.get("/members", requireToken, isAdmin, async (req, res, next) => {
   try {
     const users = await User.findAll({
       where: {
         role: "MEMBER",
       },
+      attributes: { exclude: ["password", "isAdmin"] },
       include: {
         model: Booking,
         as: "memberBooking",
@@ -71,9 +60,11 @@ router.get("/members", async (req, res, next) => {
 
 // --------------------------------------------------------------//
 // MEMBERS GET /api/users/members/:id
-router.get("/members/:id", async (req, res, next) => {
+router.get("/members/:id", requireToken, requireTokenAndAuthorize, async (req, res, next) => {
   try {
+
     const member = await User.findByPk(req.params.id, {
+      attributes: { exclude: ["password", "isAdmin"] },
       include: [
         {
           model: Booking,
