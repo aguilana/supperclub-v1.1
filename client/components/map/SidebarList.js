@@ -60,18 +60,18 @@ const SidebarList = ({ bounds, selectedMarker, filteredBookings, user }) => {
               <div className="map-booking-container-image">
                 <img src={booking.imageUrl} alt={booking.title} />
               </div>
-              <div>
-                <p className="map-booking-container-location">
-                  <small>
-                    {booking.city}, {booking.state}
-                  </small>
-                </p>
-              </div>
-              <div>
-                <p className="map-booking-container-title">
-                  <small>{booking.title}</small>
-                </p>
-              </div>
+
+              <p className="map-booking-container-location">
+                <small>
+                  {booking.city}, {booking.state}
+                </small>
+              </p>
+
+
+              <p className="map-booking-container-title">
+                <small>{booking.title}</small>
+              </p>
+
               <div className="map-booking-container-date">
                 <p>
                   <small>{booking.startDateTime}</small>

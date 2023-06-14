@@ -7,10 +7,11 @@ import { ModalCard } from "../profile/card/Card";
 import ClearIcon from "@mui/icons-material/Clear";
 import { shortenString } from "../../utils/shortenString";
 import dayjs from "dayjs";
+import { Loading } from "../";
 
 const Chefs = () => {
   const dispatch = useDispatch();
-  const chefs = useSelector(selectAllChefs);
+  const { chefs, isLoading, error } = useSelector(selectAllChefs);
 
   const bookingIsFuture = (booking) => {
     const bookingDateTime = booking.startDateTime.split(" ");
@@ -60,97 +61,93 @@ const Chefs = () => {
     textAlign: "center",
   };
 
-  // function shortenString(str) {
-  //   if (str.length > 25) {
-  //     return str.slice(0, 25) + "..."
-  //   }
-  //   return str
-  // }
+
 
   return (
-    <div className="chefs-page-container">
-      <header className="chefs-page-banner">
-        <h1>Check Out Who's Cooking!</h1>
-        <p>Chefs who want to share their passion with you!</p>
-      </header>
-      <div className="chefs-allCards-container">
-        {chefs && chefs.length ? (
-          chefs.map((chef, idx) => {
-            return (
-              // Box
-              chef?.chefBooking?.length > 0 &&
-              <div key={idx} className="chefs-card-container">
-                <h3 className="chefName" style={{ marginBottom: "10px" }}>
-                  Chef {chef.firstName} {chef.lastName}
-                </h3>
-                <p style={{ marginBottom: "10px" }}>{chef.bio}</p>
-                <p style={{ marginBottom: "10px" }}>Current Hostings:</p>
-                <div className="chefs-card-bookingcards-container">
-                  {chef.chefBooking && chef.chefBooking.length ? (
-                    chef.chefBooking.map((booking, idx) => {
-                      return bookingIsFuture(booking) ? (
-                        // Button
-                        <Button
-                          onClick={() => handleOpen(booking)}
-                          key={booking.id || idx}
-                          className="chefs-card-bookingcard common-button"
-                          variant="contained"
-                          size="small"
-                          style={{
-                            fontSize: "10px",
-                            height: "65px",
-                            width: "140px",
-                          }}
-                          sx={{
-                            "&:hover": {
+    isLoading ? <Loading /> :
+      <div className="chefs-page-container">
+        <header className="chefs-page-banner">
+          <h1>Check Out Who's Cooking!</h1>
+          <p>Chefs who want to share their passion with you!</p>
+        </header>
+        <div className="chefs-allCards-container">
+          {chefs && chefs.length ? (
+            chefs.map((chef, idx) => {
+              return (
+                // Box
+                chef?.chefBooking?.length > 0 &&
+                <div key={idx} className="chefs-card-container">
+                  <h3 className="chefName" style={{ marginBottom: "10px" }}>
+                    Chef {chef.firstName} {chef.lastName}
+                  </h3>
+                  <p style={{ marginBottom: "10px" }}>{chef.bio}</p>
+                  <p style={{ marginBottom: "10px" }}>Current Hostings:</p>
+                  <div className="chefs-card-bookingcards-container">
+                    {chef.chefBooking && chef.chefBooking.length ? (
+                      chef.chefBooking.map((booking, idx) => {
+                        return bookingIsFuture(booking) ? (
+                          // Button
+                          <Button
+                            onClick={() => handleOpen(booking)}
+                            key={booking.id || idx}
+                            className="chefs-card-bookingcard common-button"
+                            variant="contained"
+                            size="small"
+                            style={{
+                              fontSize: "10px",
+                              height: "65px",
+                              width: "140px",
+                            }}
+                            sx={{
+                              "&:hover": {
+                                backgroundColor: "#EB5757",
+                                color: "whitesmoke",
+                                opacity: ".8",
+                                animation: "shake 3s",
+                                animationIterationCount: "infinite",
+                              },
                               backgroundColor: "#EB5757",
                               color: "whitesmoke",
-                              opacity: ".8",
-                              animation: "shake 3s",
-                              animationIterationCount: "infinite",
-                            },
-                            backgroundColor: "#EB5757",
-                            color: "whitesmoke",
-                          }}
-                        >
-                          <p className='chefs-card-bookingcard-p'>{shortenString(booking.title)}</p>
-                        </Button>
-                      ) : (
-                        ""
-                      );
-                    })
-                  ) : (
-                    <p>No Hostings Yet...</p>
-                  )}
+                            }}
+                          >
+                            <p className='chefs-card-bookingcard-p'>{shortenString(booking.title)}</p>
+                          </Button>
+                        ) : (
+                          ""
+                        );
+                      })
+                    ) : (
+                      <p>No Hostings Yet...</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        ) : (
-          <h1>No Chefs Around...</h1>
-        )}
+              );
+            })
+          ) : (
+            <h1>No Chefs Around...</h1>
+          )}
 
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <ModalCard booking={selectBooking} />
-            <Button
-              onClick={handleClose}
-              startIcon={<ClearIcon />}
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-              }}
-            ></Button>
-          </Box>
-        </Modal>
-      </div>
-    </div >
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <ModalCard booking={selectBooking} />
+              <Button
+                onClick={handleClose}
+                startIcon={<ClearIcon />}
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                }}
+              ></Button>
+            </Box>
+          </Modal>
+        </div>
+      </div >
   );
 };
 

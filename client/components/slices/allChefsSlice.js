@@ -13,11 +13,22 @@ export const fetchAllChefsAsync = createAsyncThunk(
 
 const allChefsSlice = createSlice({
   name: "allChefs",
-  initialState: [],
+  initialState: {
+    chefs: [],
+    isLoading: false,
+    error: null,
+  },
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(fetchAllChefsAsync.pending, (state) => {
+      state.isLoading = true;
+    });
     builder.addCase(fetchAllChefsAsync.fulfilled, (state, action) => {
-      return action.payload;
+      state.isLoading = false;
+      state.chefs = action.payload;
+    });
+    builder.addCase(fetchAllChefsAsync.rejected, (state, action) => {
+      state.error = action.error.message;
     });
   },
 });

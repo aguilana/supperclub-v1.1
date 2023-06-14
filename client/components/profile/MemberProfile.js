@@ -6,7 +6,7 @@ import {
   selectSingleMember,
 } from "../slices/singleMemberSlice";
 import { LinearProgress, Button, Skeleton, Box } from "@mui/material";
-import { PageNotFound } from "../";
+import { Loading, PageNotFound } from "../";
 import { Card } from "./card/Card";
 import dayjs from "dayjs";
 import UndoIcon from "@mui/icons-material/Undo";
@@ -53,18 +53,7 @@ const MemberProfile = ({ user }) => {
 
   if (isLoading || !currentMember) {
     return (
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-      >
-        <Skeleton />
-        <Skeleton animation="wave" />
-        <Skeleton animation={false} />
-      </Box>
+      <Loading />
     );
   }
 
@@ -99,22 +88,22 @@ const MemberProfile = ({ user }) => {
         {futureEvents
           ? futureMemberBookings && futureMemberBookings.length
             ? futureMemberBookings?.map((booking) => (
-                <Card
-                  key={booking.id}
-                  booking={booking}
-                  currentMember={currentMember}
-                />
-              ))
-            : "No bookings to show"
-          : pastMemberBookings && pastMemberBookings.length
-          ? pastMemberBookings.map((booking) => (
               <Card
                 key={booking.id}
                 booking={booking}
                 currentMember={currentMember}
               />
             ))
-          : "No previous bookings"}
+            : "No bookings to show"
+          : pastMemberBookings && pastMemberBookings.length
+            ? pastMemberBookings.map((booking) => (
+              <Card
+                key={booking.id}
+                booking={booking}
+                currentMember={currentMember}
+              />
+            ))
+            : "No previous bookings"}
       </div>
     </div>
   );
