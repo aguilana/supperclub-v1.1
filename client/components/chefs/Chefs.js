@@ -5,6 +5,7 @@ import { fetchAllChefsAsync, selectAllChefs } from "../slices/allChefsSlice";
 import "./chefForm.css";
 import { ModalCard } from "../profile/card/Card";
 import ClearIcon from "@mui/icons-material/Clear";
+import { shortenString } from "../../utils/shortenString";
 import dayjs from "dayjs";
 
 const Chefs = () => {
@@ -59,12 +60,12 @@ const Chefs = () => {
     textAlign: "center",
   };
 
-  function shortenString(str) {
-    if (str.length > 25) {
-      return str.slice(0, 25) + "..."
-    }
-    return str
-  }
+  // function shortenString(str) {
+  //   if (str.length > 25) {
+  //     return str.slice(0, 25) + "..."
+  //   }
+  //   return str
+  // }
 
   return (
     <div className="chefs-page-container">
@@ -74,10 +75,11 @@ const Chefs = () => {
       </header>
       <div className="chefs-allCards-container">
         {chefs && chefs.length ? (
-          chefs.map((chef) => {
+          chefs.map((chef, idx) => {
             return (
               // Box
-              <div key={chef.id} className="chefs-card-container">
+              chef?.chefBooking?.length > 0 &&
+              <div key={idx} className="chefs-card-container">
                 <h3 className="chefName" style={{ marginBottom: "10px" }}>
                   Chef {chef.firstName} {chef.lastName}
                 </h3>
@@ -85,12 +87,12 @@ const Chefs = () => {
                 <p style={{ marginBottom: "10px" }}>Current Hostings:</p>
                 <div className="chefs-card-bookingcards-container">
                   {chef.chefBooking && chef.chefBooking.length ? (
-                    chef.chefBooking.map((booking) => {
+                    chef.chefBooking.map((booking, idx) => {
                       return bookingIsFuture(booking) ? (
                         // Button
                         <Button
                           onClick={() => handleOpen(booking)}
-                          key={booking.id}
+                          key={booking.id || idx}
                           className="chefs-card-bookingcard common-button"
                           variant="contained"
                           size="small"

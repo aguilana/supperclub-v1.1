@@ -3,6 +3,7 @@ const {
   models: { User, Booking },
 } = require("../db");
 const { requireToken, isAdmin, requireTokenAndAuthorize } = require("../middleware/authMiddleware.js");
+const moment = require('moment');
 module.exports = router;
 
 // USERS GET /api/users
@@ -31,8 +32,25 @@ router.get("/chefs", async (req, res, next) => {
       include: {
         model: Booking,
         as: "chefBooking",
+        order: [['startDateTime', 'ASC']]
       },
     });
+
+    // Sort bookings for each user using Moment.js
+    users.forEach(user => {
+      user.chefBooking.sort((a, b) => {
+        const startDateTimeA = moment(a.startDateTime, 'MM/DD/YYYY h:mmA');
+        const startDateTimeB = moment(b.startDateTime, 'MM/DD/YYYY h:mmA');
+        if (startDateTimeA.isBefore(startDateTimeB)) {
+          return -1;
+        } else if (startDateTimeA.isAfter(startDateTimeB)) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    });
+
     res.json(users);
   } catch (err) {
     next(err);
