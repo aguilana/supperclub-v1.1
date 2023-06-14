@@ -1,5 +1,6 @@
-// Bookings of Chefs
+const { getRandomDate, getRandomTime, isDateBeforeToday, plusXHours, generateRandomHours, getNextDay } = require('./commonFuncs')
 
+// Bookings of Chefs
 const bookingData = [
     // original 3
     {
@@ -7,8 +8,8 @@ const bookingData = [
         menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
         imageUrl: 'https://i.postimg.cc/xCPHGHh5/mexican.jpg',
         suggestedDonation: 75,
-        startDateTime: '06/06/2023 5:30PM',
-        endDateTime: '06/06/2023 7:30PM',
+        startDateTime: '08/06/2023 5:30PM',
+        endDateTime: '08/06/2023 7:30PM',
         maxSeats: 6,
         openSeats: 3,
         address1: '39 South Russell',
@@ -135,8 +136,8 @@ const bookingData = [
         menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
         imageUrl: 'https://i.postimg.cc/KvpPsPzs/flipiniobbq.jpg',
         suggestedDonation: 85,
-        startDateTime: '07/20/2023 12:00PM',
-        endDateTime: '07/20/2023 9:30PM',
+        startDateTime: '07/20/2023 4:00PM',
+        endDateTime: '07/20/2023 9:00PM',
         maxSeats: 30,
         openSeats: 15,
         address1: '955 Foothill Dr',
@@ -422,7 +423,140 @@ const bookingData = [
         chefId: 8,
         cuisineId: 4,
     },
+    {
+        title: 'Delicious Meal with Dessert',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '12/07/2023 5:00PM',
+        endDateTime: '12/07/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '1304 N Herndon St',
+        city: 'Arlington',
+        state: 'VA',
+        zipCode: '22201',
+        latitude: 38.888381072489196,
+        longitude: -77.09713729671806,
+        chefId: 10,
+        cuisineId: 9,
+    },
+    {
+        title: 'Flavors of the Mediterranean: A Sumptuous Supperclub Experience',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '08/07/2023 5:00PM',
+        endDateTime: '08/07/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '608 Rittenhouse St NW',
+        city: 'Washington',
+        state: 'DC',
+        zipCode: '20011',
+        latitude: 38.96474222743696,
+        longitude: -77.02159547620369,
+        chefId: 11,
+        cuisineId: 8,
+    },
+    {
+        title: 'A Gastronomic Adventure: Exploring Global Cuisines at Our Supperclub',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '09/21/2023 5:00PM',
+        endDateTime: '09/21/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '4500 39th St N',
+        city: 'Arlington',
+        state: 'VA',
+        zipCode: '22207',
+        latitude: 38.921,
+        longitude: -77.132,
+        chefId: 12,
+        cuisineId: 9,
+    },
+    {
+        title: 'Indulge in Exquisite Farm-to-Table Creations: A Supperclub Affair',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '09/15/2023 5:00PM',
+        endDateTime: '09/15/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '1304 N Herndon St',
+        city: 'Arlington',
+        state: 'VA',
+        zipCode: '22201',
+        latitude: 38.888381072489196,
+        longitude: -77.09713729671806,
+        chefId: 13,
+        cuisineId: 5,
+    },
+    {
+        title: 'Savor the Delights of Modern French Cuisine: An Evening of Culinary Excellence',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '10/07/2023 5:00PM',
+        endDateTime: '10/07/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '1304 N Herndon St',
+        city: 'Arlington',
+        state: 'VA',
+        zipCode: '22201',
+        latitude: 38.888381072489196,
+        longitude: -77.09713729671806,
+        chefId: 14,
+        cuisineId: 2,
+    },
+    {
+        title: 'An Unforgettable Fusion Feast: Discovering the Best of East Meets West at Our Supperclub',
+        menu: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Est ante in nibh mauris cursus mattis molestie a. Cursus sit amet dictum sit amet justo donec enim diam. Lacinia quis vel eros donec. Urna molestie at elementum eu facilisis. Egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate. Fringilla est ullamcorper eget nulla facilisi. In eu mi bibendum neque. Adipiscing at in tellus integer feugiat scelerisque varius morbi. Faucibus in ornare quam viverra orci sagittis eu volutpat. Nisl purus in mollis nunc sed id. At tellus at urna condimentum mattis pellentesque id nibh tortor. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Viverra justo nec ultrices dui sapien eget. Vel turpis nunc eget lorem dolor sed viverra ipsum. Leo urna molestie at elementum eu facilisis sed odio morbi. Diam donec adipiscing tristique risus nec feugiat in. Massa id neque aliquam vestibulum morbi blandit cursus.\nFelis bibendum ut tristique et. Nec dui nunc mattis enim ut tellus. Orci phasellus egestas tellus rutrum tellus pellentesque eu tincidunt. Augue mauris augue neque gravida in. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Quam lacus suspendisse faucibus interdum. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque. Aliquet nibh praesent tristique magna sit amet purus. Morbi tristique senectus et netus et malesuada fames ac. Ornare quam viverra orci sagittis. Etiam sit amet nisl purus in mollis nunc. In vitae turpis massa sed elementum tempus egestas. Tellus cras adipiscing enim eu turpis egestas pretium aenean. Donec massa sapien faucibus et. Consequat nisl vel pretium lectus quam id leo in. Volutpat maecenas volutpat blandit aliquam etiam erat.\nPurus semper eget duis at tellus at urna condimentum mattis. Tempus egestas sed sed risus pretium quam vulputate dignissim. Nulla porttitor massa id neque. Aliquam faucibus purus in massa tempor nec. Morbi tristique senectus et netus et malesuada fames ac. Massa sed elementum tempus egestas sed sed risus pretium quam. Aliquet risus feugiat in ante metus dictum at tempor commodo. Massa ultricies mi quis hendrerit dolor magna eget est. Platea dictumst vestibulum rhoncus est. Malesuada proin libero nunc consequat.',
+        imageUrl: 'https://i.postimg.cc/tRtDDnWL/german.jpg',
+        suggestedDonation: 120,
+        startDateTime: '11/20/2023 5:00PM',
+        endDateTime: '11/20/2023 8:00PM',
+        maxSeats: 8,
+        openSeats: 5,
+        address1: '1304 N Herndon St',
+        city: 'Arlington',
+        state: 'VA',
+        zipCode: '22201',
+        latitude: 38.888381072489196,
+        longitude: -77.09713729671806,
+        chefId: 15,
+        cuisineId: 10,
+    },
 ];
+
+for (const booking of bookingData) {
+
+    // Check if the start date is in the past
+    if (isDateBeforeToday(booking.startDateTime)) {
+        let newDate = getRandomDate();
+        const newStartTime = getRandomTime();
+        const hoursAdded = generateRandomHours();
+        const newEndDate = plusXHours(newStartTime, hoursAdded);
+
+        const formattedStartDateTime = `${newDate} ${newStartTime}`
+        let formattedEndDateTime = `${newDate} ${newEndDate}`
+
+        // Check if the new end date starts with 12, 01, 02, 03, 04, or 05
+        if (newEndDate.startsWith('12') || newEndDate.startsWith('01') || newEndDate.startsWith('02') ||
+            newEndDate.startsWith('03') || newEndDate.startsWith('04') || newEndDate.startsWith('05')) {
+            const nextDay = getNextDay(newDate);
+            formattedEndDateTime = `${nextDay} ${newEndDate}`;
+        }
+
+        booking.startDateTime = formattedStartDateTime;
+        booking.endDateTime = formattedEndDateTime;
+    }
+}
+
 
 module.exports = {
     bookingData,

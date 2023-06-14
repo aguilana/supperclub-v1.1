@@ -5,7 +5,6 @@ const {
 require("dotenv").config();
 const { bookingData } = require("./bookingData")
 const { allChefs } = require("./chefs")
-const { cuisines } = require('./cuisines')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -80,7 +79,39 @@ async function seed() {
     // CHEFS
     const createChefs = await Promise.all(allChefs.map(chef => User.create(chef)))
 
-    await User.create({
+
+    // 7
+    // const chefNick = await User.create({
+    //     role: "CHEF",
+    //     firstName: "Nick",
+    //     lastName: "Aguila",
+    //     bio: "The man from Chile!",
+    //     mobileNumber: "555-555-5555",
+    //     email: "nick@gmail.com",
+    //     password: "123456",
+    // });
+    // // 8
+    // const chefEllie = await User.create({
+    //     role: "CHEF",
+    //     firstName: "Ellie",
+    //     lastName: "Tirado",
+    //     bio: "Yahoo! I love Ohio",
+    //     mobileNumber: "555-555-5555",
+    //     email: "ellie@gmail.com",
+    //     password: "123456",
+    // });
+
+    // const chefJames = await User.create({
+    //     role: "CHEF",
+    //     firstName: "James",
+    //     lastName: "Yates",
+    //     bio: "TACO TIME! Best Tacos in Utah, guarenteed",
+    //     mobileNumber: "555-555-5555",
+    //     email: "james@gmail.com",
+    //     password: "123456",
+    // });
+
+    const admin = await User.create({
         role: process.env.ADMIN_ROLE,
         firstName: process.env.ADMIN_FIRST_NAME,
         lastName: process.env.ADMIN_LAST_NAME,
@@ -92,9 +123,38 @@ async function seed() {
     })
 
     // CUISINES
-
-    const { categories } = cuisines
-    const allCuisines = await Promise.all(categories.map(cuisineType => Cuisine.create({ category: cuisineType })))
+    const cuisines = await Promise.all([
+        Cuisine.create({
+            category: "chinese",
+        }),
+        Cuisine.create({
+            category: "japanese",
+        }),
+        Cuisine.create({
+            category: "indian",
+        }),
+        Cuisine.create({
+            category: "french",
+        }),
+        Cuisine.create({
+            category: "thai",
+        }),
+        Cuisine.create({
+            category: "nigerian",
+        }),
+        Cuisine.create({
+            category: "brazilian",
+        }),
+        Cuisine.create({
+            category: "mexican",
+        }),
+        Cuisine.create({
+            category: "italian",
+        }),
+        Cuisine.create({
+            category: "fusion",
+        }),
+    ]);
 
     const bookings = await Promise.all(bookingData.map(booking => Booking.create(booking)))
 
@@ -129,17 +189,29 @@ async function seed() {
     await Promise.all(usersBookings.map(userBooking => UsersBookings.create(userBooking)))
 
 
-    // CHEF CUISINES
     for (const chef of createChefs) {
         const randomIdx = Math.floor(Math.random() * cuisines.length);
         await chef.addCuisine(cuisines[randomIdx], { through: "chef_cuisine" });
     }
+
+    // CHEF CUISINES
+    // 7, 8, 9
+    // await chefNick.addCuisine(cuisines[6], { through: "chef_cuisine" });
+    // await chefNick.addCuisine(cuisines[7], { through: "chef_cuisine" });
+    // await chefNick.addCuisine(cuisines[8], { through: "chef_cuisine" });
+    // await chefEllie.addCuisine(cuisines[3], { through: "chef_cuisine" });
+    // await chefEllie.addCuisine(cuisines[4], { through: "chef_cuisine" });
+    // await chefEllie.addCuisine(cuisines[5], { through: "chef_cuisine" });
+    // await chefJames.addCuisine(cuisines[1], { through: "chef_cuisine" });
+    // await chefJames.addCuisine(cuisines[2], { through: "chef_cuisine" });
+    // await chefJames.addCuisine(cuisines[7], { through: "chef_cuisine" });
+
     // USER REVIEWS
     // GOLD LEVEL
 
     console.log(`${createChefs.length} chefs created and seeded in DB`)
     console.log(`There are currently ${bookings.length} bookings in the country`)
-    console.log(`seeded ${categories.length} cuisines`);
+    console.log(`seeded ${cuisines.length} cuisines`);
     console.log("USER MAGIC METHODS: ", Object.keys(User.prototype));
     console.log("CUISINE MAGIC METHODS: ", Object.keys(User.prototype));
     console.log("BOOKING MAGIC METHODS: ", Object.keys(Booking.prototype));

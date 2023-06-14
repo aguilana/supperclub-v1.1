@@ -3,6 +3,7 @@ const {
   models: { User, Booking, Cuisine, UsersBookings },
 } = require("../db");
 const { requireToken, isAdmin, requireTokenAndAuthorize } = require("../middleware/authMiddleware.js");
+const moment = require('moment');
 module.exports = router;
 
 // BOOKINGS GET /api/bookings
@@ -13,7 +14,7 @@ router.get("/", async (req, res, next) => {
         {
           model: User,
           as: "chefBooking",
-          attributes: ["id", "firstName", "lastName", "bio"]
+          attributes: ["id", "firstName", "lastName", "bio"],
         },
         {
           model: User,
@@ -27,7 +28,14 @@ router.get("/", async (req, res, next) => {
         },
       ],
     });
-    res.json(bookings);
+
+    const sortedBookings = bookings.sort((a, b) => {
+      const dateA = moment(a.startDateTime, 'MM/DD/YYYY h:mmA');
+      const dateB = moment(b.startDateTime, 'MM/DD/YYYY h:mmA');
+      return dateA - dateB;
+    });
+
+    res.json(sortedBookings);
   } catch (err) {
     next(err);
   }

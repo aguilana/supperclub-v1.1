@@ -22,8 +22,10 @@ if (process.env.HEROKU_POSTGRESQL_AQUA_URL) {
   };
 }
 
+const seededDbUrl = process.env.NODE_ENV === 'production' ? process.env.HEROKU_POSTGRESQL_AQUA_URL : `postgres://localhost:5432/${databaseName}`;
+
 const db = new Sequelize(
-  process.env.HEROKU_POSTGRESQL_AQUA_URL || `postgres://localhost:5432/${databaseName}`,
+  seededDbUrl,
   config
 );
 module.exports = db;
